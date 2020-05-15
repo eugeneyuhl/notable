@@ -9,6 +9,37 @@ router.get('/', (req, res) => {
     res.json(patients);
 })
 
+router.get('/details', (req, res) => {
+    const patient = patients.find(patient => patient.name === req.query.name);
+    
+    if (patient) {
+        res.json(patient);
+    } else {
+        res.status(400).json({ msg: `Patient ${req.query.name} is not found.`});
+    }
+})
+
+router.get('/address', (req, res) => {
+    const patient = patients.find(patient => patient.name === req.query.name);
+    
+    if (patient) {
+        res.json(patient.address);
+    } else {
+        res.status(400).json({ msg: `Patient ${req.query.name} is not found.`});
+    }
+})
+
+router.get('/:id', (req, res) => {
+    const patient = patients.find(patient => patient.id.toString() === req.params.id);
+    console.log(patient);
+
+    if (patient) {
+        res.json(patient);
+    } else {
+        res.status(400).json({ msg: `Patient with ${req.params.id} is not found.`});
+    }
+})
+
 // Add the new patient.
 router.post('/', (req, res) => {
     const newPatient = {
