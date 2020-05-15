@@ -10,3 +10,16 @@ Steps to run:
     b. To get a list of all appointments for a particular doctor and particular day
         i. Use GET request
         ii. Use the following URL: "http://localhost:5000/api/doctors/appointments?doctorId=2&date=20180509"
+    c. To delete an existing appointment from a doctor's calendar:
+        i. Use DELETE request
+        ii. Use the following URL: "http://localhost:5000/api/doctors/appointments?id=1"
+        iii. This will delete the appointment of the given appointment Id.
+    d. To add a new appointment to a doctor's calendar:
+        i. Use POST request
+        ii. Use the following URL: "http://localhost:5000/api/doctors/appointments?patientId=2&date=20190512&time=1000&kind=1&doctorId=2"
+        iii. We will assume the following:
+             - The Patient data is available in Patient database.
+             - Date must be in YYYYMMDD
+             - Time must be in 24 hours format
+             - Kind of visit will have 1 - New Patient and 2 - Follow Up
+             - The Doctor data is available in Doctor database.
