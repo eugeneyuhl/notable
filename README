@@ -1,0 +1,12 @@
+Notable assessment
+
+Steps to run:
+1. Start the server by typing "npm run start"
+2. Open the Postman app to perform GET, POST, DELETE request.
+3. In Postman:
+   a. To get a list of doctors:
+        i. Use GET request
+        ii. Use the following URL: "http://localhost:5000/api/doctors/all"
+    b. To get a list of all appointments for a particular doctor and particular day
+        i. Use GET request
+        ii. Use the following URL: "http://localhost:5000/api/doctors/appointments?doctorId=2&date=20180509"

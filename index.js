@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }))
 
 // Routing api calls.
-app.use('/api/patients', require('./routes/api/patients'));
+app.use('/api/doctors', require('./routes/api/doctors'));
 
 // Set static folder (Choose this or Homepage Route)
 app.use(express.static(path.join(__dirname, 'public')));

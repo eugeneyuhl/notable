@@ -1,40 +1,34 @@
 var patients = [
     {
-        id: 1,
+        id: "1",
         name: 'John Doe',
         email: 'john@gmail.com',
-        phone: '+1(312)95782312',
-        address: {
-            street: "2421 N 5th St",
-            city: "Minneapolis",
-            state: "MN",
-            zip: "54112"
-        }
+        phone: '+1(312)95782312'
     },
     {
-        id:2,
-        name: 'Bob',
+        id: "2",
+        name: 'Sterling Archer',
         email: 'bob@gmail.com',
         phone: '+1(752)95782312',
-        address: {
-            street: "2421 N 20th St",
-            city: "San Francisco",
-            state: "CA",
-            zip: "94112"
-        }
     },
     {
-        id:3,
-        name: 'Shane',
+        id: "3",
+        name: 'Cyril Figis',
         email: 'shane@gmail.com',
         phone: '+1(815)95782312',
-        address: {
-            street: "22 S 10th St",
-            city: "Portland",
-            state: "Oregon",
-            zip: "10012"
-        }
-    }
+    },
+    {
+        id: "4",
+        name: 'Ray Gilles',
+        email: 'ray@gmail.com',
+        phone: '+1(815)95782312',
+    },
+    {
+        id: "5",
+        name: 'Bob',
+        email: 'bob@gmail.com',
+        phone: '+1(815)95782312',
+    },
 ];
 
 module.exports = patients;
