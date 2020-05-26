@@ -4,10 +4,13 @@ const path = require('path');
 const app = express();
 // Body Parser Middle for Post request. (ex. members.js POST request)
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({
+    extended: false
+}))
 
 // Routing api calls.
 app.use('/api/doctors', require('./routes/api/doctors'));
+app.use('api/demo', require('./routes/api/demo'));
 
 // Set static folder (Choose this or Homepage Route)
 app.use(express.static(path.join(__dirname, 'public')));

@@ -1,5 +1,4 @@
-var doctors = [
-    {
+var doctors = [{
         id: "1",
         name: 'Dr. John Doe',
     },

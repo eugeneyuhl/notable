@@ -6,8 +6,8 @@ const uuid = require('uuid');
 let doctors = require('../../data/Doctors');
 let appointments = require('../../data/Appointments');
 let kindMap = {
-    "1" : "New Patient",
-    "2" : "Follow Up"
+    "1": "New Patient",
+    "2": "Follow Up"
 };
 
 // Get a list of doctors.
@@ -23,7 +23,9 @@ router.get('/appointments', (req, res) => {
 
     const found = doctors.some(doc => doc.id === doctorId);
     if (!found) {
-        res.status(400).json({ msg: `Doctor with id ${doctorId} does not exist.`});
+        res.status(400).json({
+            msg: `Doctor with id ${doctorId} does not exist.`
+        });
         return;
     }
     console.log(`Doctor with id ${doctorId} on ${date}`);
@@ -39,7 +41,9 @@ router.get('/appointments', (req, res) => {
     if (list) {
         res.json(list);
     } else {
-        res.status(400).json({ msg: `Doctor with id ${doctorId} does not have any appointments on ${date}.`});
+        res.status(400).json({
+            msg: `Doctor with id ${doctorId} does not have any appointments on ${date}.`
+        });
     }
 })
 
@@ -49,7 +53,9 @@ router.delete('/appointments', (req, res) => {
     const found = appointments.some(appointment => appointment.id === appointmentId);
 
     if (!found) {
-        res.status(400).json({ msg: `Appointment id ${appointmentId} does not exist.`});
+        res.status(400).json({
+            msg: `Appointment id ${appointmentId} does not exist.`
+        });
         return;
     }
     console.log(`Removing appointment id ${appointmentId}.`);
@@ -57,7 +63,7 @@ router.delete('/appointments', (req, res) => {
     const index = appointments.findIndex((appointment, i) => {
         return appointment.id == appointmentId;
     });
-    appointments.splice(index,1);
+    appointments.splice(index, 1);
 
     res.json({
         msg: 'Appointment removed',
@@ -85,17 +91,21 @@ router.post('/appointments', (req, res) => {
                 timeMap.set(appTime, 0);
             }
             console.log(appTime);
-            timeMap.set(appTime, timeMap.get(appTime)+1);
+            timeMap.set(appTime, timeMap.get(appTime) + 1);
         }
     });
     var convertedDateTime = moment(`${req.query.date} ${req.query.time}`, "YYYYMMDD HHmm").format("MM/DD/YYYY hh:mm A").toString();
     if (!checkValidTime(req.query.time)) {
-        res.json({ msg: `Appointment time is not in 15 minute interval.`});
+        res.json({
+            msg: `Appointment time is not in 15 minute interval.`
+        });
         return;
     }
 
     if (timeMap.has(convertedDateTime) && timeMap.get(convertedDateTime) >= 3) {
-        res.json({ msg: `Doctor has too many appointment at this time.`});
+        res.json({
+            msg: `Doctor has too many appointment at this time.`
+        });
         return;
     }
 
@@ -111,7 +121,7 @@ router.post('/appointments', (req, res) => {
     };
 
     appointments.push(newAppointment);
-    timeMap.set(convertedDateTime, timeMap.get(convertedDateTime)+1);
+    timeMap.set(convertedDateTime, timeMap.get(convertedDateTime) + 1);
     res.json({
         msg: `New appointment is created.`,
         appointments

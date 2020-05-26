@@ -1,5 +1,4 @@
-var appointments = [
-    {
+var appointments = [{
         id: "1",
         patientId: "5",
         date: "05/09/2018",
